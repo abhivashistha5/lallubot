@@ -1,7 +1,7 @@
 import os
 import discord
-from common import config;
-import discord
+from common import config
+from commands import standard_replies
 
 client = discord.Client()
 
@@ -14,7 +14,6 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    if message.content.startswith('$hello'):
-        await message.channel.send('Hello')
+    await standard_replies.reply_to_message(message)
 
 client.run(os.getenv('DISCORD_TOKEN'))
